@@ -41,7 +41,7 @@ BDSC区块链个大数据服务中人信息脱敏工具链，用于加密密钥�
 传输流程  
 直连模式  
 a.交互流程图  
-![直连明文传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.1.png?raw=true)  
+![直连明文传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.1.png?raw=true)    
 b.各参与方可获取的个人信息情况：  
 传输方式	机构	可获取个人信息	风险  
 明文	商户	明文	数据泄漏  
@@ -54,6 +54,8 @@ c.信息流向问题
 直连模式商户与数据源直接达成合作，信息来源和信息的使用场景十分明确。  
 间连模式  
 a.交互流程图  
+![间连md5传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.2.png?raw=true)  
+
 
 b.各参与方拥可获取个人信息情况：  
 传输方式	机构	可获取个人信息	风险
@@ -126,26 +128,31 @@ BDSC从供应链数据体系入手，将个人信息依靠成熟的加密算法�
 银行向运营商发送手机验证码短信请求（手机号）；  
 银行向身份中心发送身份实名认证（姓名+身份证号）；  
 银行向运营商发送运营商3要素认证（姓名+身份证号+手机号）。  
+![交互关系](https://github.com/georgewangchn/BDSC/blob/master/images/4.1.png?raw=true)  
 
 
 密钥分发  
 身份中心向运营商、银行、商户分发加密密钥；  
 运营商向银行、商户分发加密密钥；  
 银行向商户分发加密密钥。  
+![密钥分发](https://github.com/georgewangchn/BDSC/blob/master/images/4.2.png?raw=true)  
 
 脱敏存储后与交互  
 用户注册手机号账户  
 用户输入手机号mobile，商户1调取运营商M短信验证码接口。注册完成后商户1删除手机号mobile，仅存储Mkey_1(mobile)  
+![注册手机号](https://github.com/georgewangchn/BDSC/blob/master/images/4.3.png?raw=true)  
 
 
 用户在商户1做实名认证  
 用户输入姓名name和身份证号id，商户1调取身份中心G实名认证接口。认证完成后商户删除name和id，仅存储Gkey_1(name)和Gkey_1(id)。  
+![身份实名认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.4.png?raw=true)  
 
 
 商户风控系统对用户做运营商3要素认证  
 商户1调取运营商M3要素接口，提交Mkey_1(mobile)、Gkey_1(name)和Gkey_1(id)。  
 运营商M收到请求，仅能识别Mkey_1(mobile),无法识别Gkey_1(name)和Gkey_1(id)。运营商M需要调用身份中心G接口，将商户1密钥Gkey_1加密的身份信息转换为运营商Gkey_M密钥加密的身份信息Gkey_M(name)和Gkey_M(id）。转换完成后运营商M完成3要素认证。  
 
+![运营商3要素认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.5.png?raw=true)  
 
 
 商户风控系统对用户做银行卡4要素认证  
@@ -153,6 +160,7 @@ BDSC从供应链数据体系入手，将个人信息依靠成熟的加密算法�
 银行B收到请求，仅能识别Bkey_1(mobile),对于Gkey_1(name)和Gkey_1(id)需调用身份中心G接口，将商户1密钥Gkey_1加密的身份信息转换为银行B密钥Gkey_B加密的身份信息Gkey_B(name)和Gkey_B(id）;调用运营商M接口，将商户1密钥Mkey_1加密的手机号转换为银行B密钥加密的手机号Mkey_B(mobile）.转换完成后进行4要素比对。  
 
 
+![银行卡4要素认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.6.png?raw=true)  
 
 
 
@@ -166,11 +174,14 @@ BDSC承担个人信息脱敏加密密钥的分发和同步，不参与机构间�
 商户信息直接或间接提交到数据源，数据源为其生成非对称加密算法密钥对。  
 公钥发布  
 商户直接或间接将商户基本信息提交至数据源，数据源为其生成的公私钥对，并将商户公钥发布至BDSC联盟区块链。  
+![公钥发布](https://github.com/georgewangchn/BDSC/blob/master/images/5.1.png?raw=true)  
 
 公钥获取  
 数据源直接将公钥发送至商户，或者中间商从BSDC联盟链上获取公钥，发送至商户。  
+![公钥获取](https://github.com/georgewangchn/BDSC/blob/master/images/5.2.png?raw=true)  
 
 脱敏信息传输  
+![脱敏传输](https://github.com/georgewangchn/BDSC/blob/master/images/5.3.png?raw=true)  
 
 
 公钥更新  
@@ -184,14 +195,17 @@ BDSC承担个人信息脱敏加密密钥的分发和同步，不参与机构间�
 商户信息和商户CA证书公钥，直接或间接提交到数据源，数据源为其生成对称加密算法密钥key。  
 密钥发布  
 数据源将生成的密钥key通过商户CA证书公钥加密后发布到BDSC联盟链。  
+![密钥发布](https://github.com/georgewangchn/BDSC/blob/master/images/5.4.png?raw=true)  
 
 
 密钥获取  
 数据源直接将CA（key）发送给商户，或中间商从BSDC联盟链上获取CA（key），发送给商户。  
+![密钥获取](https://github.com/georgewangchn/BDSC/blob/master/images/5.5.png?raw=true)  
 
 
 脱敏传输  
 
+![脱敏传输](https://github.com/georgewangchn/BDSC/blob/master/images/5.6.png?raw=true)  
 
 
 密钥更新  
@@ -211,11 +225,14 @@ BDSC承担个人信息脱敏加密密钥的分发和同步，不参与机构间�
 BSDC联盟区块链主要应用于加密密钥的管理，相对独立于业务系统，因此系统改造工作相对比较地。主要涉及2个层面改造，传输和存储改造。  
 ### 1.商户与数据源传输改造  
 传输改造工作最小，商户仅做加密操作，数据源做解密操作。  
+![传输改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.1.png?raw=true)  
 
 ### 2.商户存储改造  
 商户同时存储明文和加密后的密文  
+![商户改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.2.png?raw=true)  
 
 ### 3.商户、中间商和数据源上链改造  
+![上链改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.3.png?raw=true)  
 
 ## 八、优势对比  
 类型	问题	BDSC方式	传统方式
