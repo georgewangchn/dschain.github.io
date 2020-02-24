@@ -41,7 +41,7 @@ BDSC区块链个大数据服务中人信息脱敏工具链，用于加密密钥�
 传输流程  
 直连模式  
 a.交互流程图  
-![直连明文传输](https://github.com/georgewangchn/BDSC/tree/master/images/3.1.png)  
+![直连明文传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.1.png?raw=true)  
 b.各参与方可获取的个人信息情况：  
 传输方式	机构	可获取个人信息	风险  
 明文	商户	明文	数据泄漏  
