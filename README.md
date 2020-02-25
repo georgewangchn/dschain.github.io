@@ -232,7 +232,7 @@ DSChain区块链主要应用于加密密钥的管理，相对独立于业务系�
 ![上链改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.3.png?raw=true)  
 
 ## 八、优势对比    
-类型|	问题|	DSChain方式|	传统方式
+类型|	问题|DSChain方式|	传统方式
 ---- | ----- | ------  | ------  
 传输方式对比	|中间商留存|	无法留存|	可留存
 -|中间商泄漏|	无法泄漏	|可泄漏
