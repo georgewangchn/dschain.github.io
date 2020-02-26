@@ -54,7 +54,7 @@ DSChain是上海九豪科技网络服务有限公司开发和维护的开源联�
 #### 传输流程  
 ##### 直连模式  
 **a.交互流程图**  
-![直连明文传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.1.png?raw=true)    
+![直连明文传输](https://github.com/dschain/dschain.github.io/blob/master/images/3.1.png?raw=true)    
 **b.各参与方可获取的个人信息情况**  
 
 传输方式|机构|可获取个人信息|风险
@@ -68,7 +68,7 @@ MD5|商户|明文|数据泄漏
 直连模式商户与数据源直接达成合作，信息来源和信息的使用场景十分明确。  
 ##### 间连模式    
 **a.交互流程图**  
-![间连md5传输](https://github.com/georgewangchn/BDSC/blob/master/images/3.2.png?raw=true)  
+![间连md5传输](https://github.com/dschain/dschain.github.io/blob/master/images/3.2.png?raw=true)  
 **b.各参与方可获取的个人信息情况**  
 
 传输方式	 | 机构	 | 可获取个人信息 | 	风险
@@ -144,28 +144,28 @@ DSChain从供应链数据体系入手，将个人信息依靠成熟的加密算�
 银行向运营商发送手机验证码短信请求（手机号）；  
 银行向身份中心发送身份实名认证（姓名+身份证号）；  
 银行向运营商发送运营商3要素认证（姓名+身份证号+手机号）。  
-![交互关系](https://github.com/georgewangchn/BDSC/blob/master/images/4.1.png?raw=true)  
+![交互关系](https://github.com/dschain/dschain.github.io/blob/master/images/4.1.png?raw=true)  
 #### 密钥分发  
 身份中心向运营商、银行和商户分发加密密钥；  
 运营商向银行和商户分发加密密钥；  
 银行向商户分发加密密钥。  
-![密钥分发](https://github.com/georgewangchn/BDSC/blob/master/images/4.2.png?raw=true)  
+![密钥分发](https://github.com/dschain/dschain.github.io/blob/master/images/4.2.png?raw=true)  
 
 #### 脱敏存储后与交互  
 **手机号账户注册**  
 用户输入手机号mobile，商户1调取运营商M短信验证码接口；注册完成后商户1删除明文mobile，仅存储Mkey_1(mobile)  
-![注册手机号](https://github.com/georgewangchn/BDSC/blob/master/images/4.3.png?raw=true)  
+![注册手机号](https://github.com/dschain/dschain.github.io/blob/master/images/4.3.png?raw=true)  
 **实名认证**   
 用户输入姓名name和身份证号id，商户1调取身份中心G实名认证接口；认证完成后商户删除明文name和id，仅存储Gkey_1(name)和Gkey_1(id)。    
-![身份实名认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.4.png?raw=true)  
+![身份实名认证](https://github.com/dschain/dschain.github.io/blob/master/images/4.4.png?raw=true)  
 **运营商3要素认证**  
 商户1调取运营商M的3要素认证接口，提交Mkey_1(mobile)、Gkey_1(name)和Gkey_1(id)；  
 运营商M收到请求，仅能识别Mkey_1(mobile)，无法识别Gkey_1(name)和Gkey_1(id)。运营商M需调用身份中心G接口，将商户1密钥Gkey_1加密的身份信息转换为运营商Gkey_M密钥加密的身份信息Gkey_M(name)和Gkey_M(id）；转换完成后运营商M即能完成3要素认证。  
-![运营商3要素认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.5.png?raw=true)  
+![运营商3要素认证](https://github.com/dschain/dschain.github.io/blob/master/images/4.5.png?raw=true)  
 **银行卡4要素认证**  
 用户输入银行卡号card，商户1向银行B调取银行卡4要素认证接口，提交Bkey_1(card)、Mkey_1(mobile)、Gkey_1(name)和Gkey_1(id)；   
 银行B收到请求，仅能识别Bkey_1(mobile),对于Gkey_1(name)和Gkey_1(id)需调用身份中心G接口，将商户1密钥Gkey_1加密的身份信息转换为银行B密钥Gkey_B加密的身份信息Gkey_B(name)和Gkey_B(id）;对于Mkey_1(mobile)需调用运营商M接口，将商户1密钥Mkey_1加密的手机号转换为银行B密钥加密的手机号Mkey_B(mobile）；转换完成后即能完成4要素认证。  
-![银行卡4要素认证](https://github.com/georgewangchn/BDSC/blob/master/images/4.6.png?raw=true)  
+![银行卡4要素认证](https://github.com/dschain/dschain.github.io/blob/master/images/4.6.png?raw=true)  
 
 ## 五、DSChain区块链  
 密钥的分发、同步和维护使用传统的系统交互在落地操作层面很难实现，但通过区块链技术很好的解决。  
@@ -178,12 +178,12 @@ DSChain承担个人信息脱敏加密密钥的分发和同步，不参与机构�
 商户直接或间接将基本信息提交至数据源，数据源为其生成非对称加密算法密钥对。  
 #### 公钥发布  
 数据源将商户公钥发布至DSChain区块链。  
-![公钥发布](https://github.com/georgewangchn/BDSC/blob/master/images/5.1.png?raw=true)  
+![公钥发布](https://github.com/dschain/dschain.github.io/blob/master/images/5.1.png?raw=true)  
 #### 公钥获取  
 商户直接或间接DSChain区块链获取公钥。  
-![公钥获取](https://github.com/georgewangchn/BDSC/blob/master/images/5.2.png?raw=true)  
+![公钥获取](https://github.com/dschain/dschain.github.io/blob/master/images/5.2.png?raw=true)  
 #### 脱敏信息传输  
-![脱敏传输](https://github.com/georgewangchn/BDSC/blob/master/images/5.3.png?raw=true)  
+![脱敏传输](https://github.com/dschain/dschain.github.io/blob/master/images/5.3.png?raw=true)  
 #### 公钥更新  
 数据源发布新公钥信息（公钥编号，new_public_key,生效日期）至DSChain区块链;  
 商户直接或间接从DSChain获取公钥信息（new_public_key,生效日期）。  
@@ -196,12 +196,12 @@ DSChain承担个人信息脱敏加密密钥的分发和同步，不参与机构�
 商户直接或间接将CA证书和基本信息提交至数据源，数据源为其生成对称加密算法密钥key。  
 #### 密钥发布  
 数据源将生成的密钥key通过商户CA证书公钥加密CA(key)，并发布到DSChain区块链。  
-![密钥发布](https://github.com/georgewangchn/BDSC/blob/master/images/5.4.png?raw=true)  
+![密钥发布](https://github.com/dschain/dschain.github.io/blob/master/images/5.4.png?raw=true)  
 #### 密钥获取  
 商户直接或间接DSChain区块链获取CA（key）。  
-![密钥获取](https://github.com/georgewangchn/BDSC/blob/master/images/5.5.png?raw=true)  
+![密钥获取](https://github.com/dschain/dschain.github.io/blob/master/images/5.5.png?raw=true)  
 #### 脱敏传输  
-![脱敏传输](https://github.com/georgewangchn/BDSC/blob/master/images/5.6.png?raw=true)  
+![脱敏传输](https://github.com/dschain/dschain.github.io/blob/master/images/5.6.png?raw=true)  
 #### 密钥更新  
 数据源发布新的密钥信息（公钥编号，CA(new_key),生效日期）至DSChain区块链;  
 商户直接或间接中间商从DSChain获取密钥信息（CA(new_key),生效日期）。  
@@ -223,14 +223,14 @@ DSChain区块链主要应用于加密密钥的管理，相对独立于业务系�
 
 ### 1.商户与数据源传输改造  
 传输改造工作最小，商户仅做加密操作，数据源做解密操作。  
-![传输改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.1.png?raw=true)  
+![传输改造](https://github.com/dschain/dschain.github.io/blob/master/images/7.1.png?raw=true)  
 
 ### 2.商户存储改造  
 商户同时存储明文和加密后的密文  
-![商户改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.2.png?raw=true)  
+![商户改造](https://github.com/dschain/dschain.github.io/blob/master/images/7.2.png?raw=true)  
 
 ### 3.商户、中间商和数据源上链改造  
-![上链改造](https://github.com/georgewangchn/BDSC/blob/master/images/7.3.png?raw=true)  
+![上链改造](https://github.com/dschain/dschain.github.io/blob/master/images/7.3.png?raw=true)  
 
 ## 八、优势对比   
 
