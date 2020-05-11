@@ -4,11 +4,11 @@ Data Services Chain
 ## 一、简介
 DSChain是上海九豪科技网络服务有限公司开发和维护的开源联盟区块链，用于数据服务中个人信息脱敏密钥管理(发布、更新和维护)平台。  
 关于DSChain的商业合作可联系：george@9haoai.com  
-[查看Github源码>>]  (https://github.com/dschain/dschain.github.io)
+[查看Github源码](https://github.com/dschain/dschain.github.io)
 
-曾用名:BDSC,[获得区块链服务网络BSN第一次开发者大赛优秀奖>>https://www.bsnbase.com/main/gameDetail?type=CN]
+[获得区块链服务网络BSN第一次开发者大赛优秀奖](https://www.bsnbase.com/main/gameDetail?type=CN)
 
-[区块链生产交易预览>>http://dschain.9haoai.com/#/home]
+[区块链生产交易预览](http://dschain.9haoai.com/#/home)
 ## 二、大数据服务背景
 
 ### 1.名词解释  
